@@ -16,12 +16,12 @@ public class Main {
 
         System.out.println("=== Aplikasi Pengolahan Nilai Mahasiswa ===");
 
-        // Program mengelola proses secara berulang (loop menu) [cite: 50]
+        // Program mengelola proses secara berulang (loop menu)
         while (lanjut) {
             double tugas = -1, uts = -1, uas = -1;
             boolean inputValid = false;
 
-            // Modul validasi dipanggil oleh modul input data [cite: 61]
+            // Modul validasi dipanggil oleh modul input data 
             while (!inputValid) {
                 System.out.println("\nMasukkan Nilai Mahasiswa (0-100)");
                 System.out.print("Nilai Tugas: ");
