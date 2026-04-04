@@ -17,53 +17,133 @@ public class ValidasiDataTest {
     
     @Test
     public void testTC01_SemuaNol() {
-    assertFalse(validator.validasi(0, 0, 0), "Gagal di N3: Harusnya false");
+        // (1) setup (arrange, build)
+        double tugas = 0, uts = 0, uas = 0;
+        boolean actual;
+
+        // (2) exercise (act, operate)
+        actual = validator.validasi(tugas, uts, uas);
+
+        // (3) verify (assert, check)
+        assertFalse(actual, "Gagal di N3: Harusnya false");
     }
 
     @Test
     public void testTC02_UasBukanNol() {
-    assertTrue(validator.validasi(0, 0, 50), "Lolos Blok 2: Harusnya true");
+        // (1) setup (arrange, build)
+        double tugas = 0, uts = 0, uas = 50;
+        boolean actual;
+
+        // (2) exercise (act, operate)
+        actual = validator.validasi(tugas, uts, uas);
+
+        // (3) verify (assert, check)
+        assertTrue(actual, "Lolos Blok 2: Harusnya true");
     }
 
     @Test
     public void testTC03_UtsBukanNol() {
-    assertTrue(validator.validasi(0, 50, 0), "Lolos Blok 2: Harusnya true");
+        // (1) setup (arrange, build)
+        double tugas = 0, uts = 50, uas = 0;
+        boolean actual;
+
+        // (2) exercise (act, operate)
+        actual = validator.validasi(tugas, uts, uas);
+
+        // (3) verify (assert, check)
+        assertTrue(actual, "Lolos Blok 2: Harusnya true");
     }
 
     @Test
     public void testTC04_SkenarioNormalValid() {
-    assertTrue(validator.validasi(50, 50, 50), "Lolos Blok 2: Harusnya true");
+        // (1) setup (arrange, build)
+        double tugas = 50, uts = 50, uas = 50;
+        boolean actual;
+
+        // (2) exercise (act, operate)
+        actual = validator.validasi(tugas, uts, uas);
+
+        // (3) verify (assert, check)
+        assertTrue(actual, "Lolos Blok 2: Harusnya true");
     }
 
     // --- GROUP 2: Uji Blok Kondisi || (Di Luar Rentang) ---
     
     @Test
     public void testTC05_TugasNegatif() {
-    assertFalse(validator.validasi(-1, 50, 50), "Gagal N5 (Tugas < 0)");
+        // (1) setup (arrange, build)
+        double tugas = -1, uts = 50, uas = 50;
+        boolean actual;
+
+        // (2) exercise (act, operate)
+        actual = validator.validasi(tugas, uts, uas);
+
+        // (3) verify (assert, check)
+        assertFalse(actual, "Gagal N5 (Tugas < 0)");
     }
 
     @Test
     public void testTC06_TugasLebihDari100() {
-    assertFalse(validator.validasi(101, 50, 50), "Gagal N6 (Tugas > 100)");
+        // (1) setup (arrange, build)
+        double tugas = 101, uts = 50, uas = 50;
+        boolean actual;
+
+        // (2) exercise (act, operate)
+        actual = validator.validasi(tugas, uts, uas);
+
+        // (3) verify (assert, check)
+        assertFalse(actual, "Gagal N6 (Tugas > 100)");
     }
 
     @Test
     public void testTC07_UtsNegatif() {
-    assertFalse(validator.validasi(50, -1, 50), "Gagal N7 (UTS < 0)");
+        // (1) setup (arrange, build)
+        double tugas = 50, uts = -1, uas = 50;
+        boolean actual;
+
+        // (2) exercise (act, operate)
+        actual = validator.validasi(tugas, uts, uas);
+
+        // (3) verify (assert, check)
+        assertFalse(actual, "Gagal N7 (UTS < 0)");
     }
 
     @Test
     public void testTC08_UtsLebihDari100() {
-    assertFalse(validator.validasi(50, 101, 50), "Gagal N8 (UTS > 100)");
+        // (1) setup (arrange, build)
+        double tugas = 50, uts = 101, uas = 50;
+        boolean actual;
+
+        // (2) exercise (act, operate)
+        actual = validator.validasi(tugas, uts, uas);
+
+        // (3) verify (assert, check)
+        assertFalse(actual, "Gagal N8 (UTS > 100)");
     }
 
     @Test
     public void testTC09_UasNegatif() {
-    assertFalse(validator.validasi(50, 50, -1), "Gagal N9 (UAS < 0)");
+        // (1) setup (arrange, build)
+        double tugas = 50, uts = 50, uas = -1;
+        boolean actual;
+
+        // (2) exercise (act, operate)
+        actual = validator.validasi(tugas, uts, uas);
+
+        // (3) verify (assert, check)
+        assertFalse(actual, "Gagal N9 (UAS < 0)");
     }
 
     @Test
     public void testTC10_UasLebihDari100() {
-    assertFalse(validator.validasi(50, 50, 101), "Gagal N10 (UAS > 100)");
+        // (1) setup (arrange, build)
+        double tugas = 50, uts = 50, uas = 101;
+        boolean actual;
+
+        // (2) exercise (act, operate)
+        actual = validator.validasi(tugas, uts, uas);
+
+        // (3) verify (assert, check)
+        assertFalse(actual, "Gagal N10 (UAS > 100)");
     }
 }
