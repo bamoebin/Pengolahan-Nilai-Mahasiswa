@@ -40,4 +40,25 @@ application {
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+
+    // Mengatur log di terminal
+    testLogging {
+        // Akan mencetak nama test case yang passed, skipped, atau failed secara realtime
+        events "passed", "skipped", "failed" 
+        showExceptions true
+        exceptionFormat "short"
+        showCauses true
+        showStackTraces true
+    }
+
+    // (Opsional) Membuat ringkasan di bagian akhir persis gaya Maven
+    afterSuite { desc, result ->
+        if (!desc.parent) { // Hanya dieksekusi setelah seluruh suite tes selesai
+            println "\n----------------------------------------------------------"
+            println "R E S U L T S"
+            println "----------------------------------------------------------"
+            println "Tests run: ${result.testCount}, Failures: ${result.failedTestCount}, Skipped: ${result.skippedTestCount}"
+            println "----------------------------------------------------------"
+        }
+    }
 }
