@@ -7,7 +7,7 @@ public class ValidasiData {
             return false;
         }
         // Jika ada nilai < 0 atau > 100 -> tidak valid
-        if (tugas < 0 || tugas > 100 || uts < 0 || uts > 100 || uas < 0 || uas > 100) {
+        if (tugas < 0 || tugas > 100 || uts < 0 || uts > 100 || uas < 0 || uas > 101) {
             return false;
         }
         // Jika semua nilai antara 0-100 -> valid 
