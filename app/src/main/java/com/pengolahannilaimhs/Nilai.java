@@ -15,25 +15,13 @@ public class Nilai {
     }
 
     public double hitungNilaiAkhir(double tugas, double uts, double uas) {
-        // Jika nilai tidak valid, return error (-1) [cite: 68]
-        if (!validasi(tugas, uts, uas)) {
-            return -1; 
-        }
         
-        // nilai_akhir = (0.3* tugas) + (0.3* uts) + (0.4* uas) [cite: 67]
         double nilaiAkhir = (0.3 * tugas) + (0.3 * uts) + (0.4 * uas);
-        
-        // Jika nilai akhir > 100, dianggap error [cite: 69]
-        if (nilaiAkhir > 100) {
-            return -1;
-        }
         
         return nilaiAkhir;
     }
 
     public String tentukanGrade(double nilaiAkhir) {
-
-        if (nilaiAkhir < 0 || nilaiAkhir > 100) return "Error";
         
         if (nilaiAkhir >= 85) return "A";
 
@@ -47,8 +35,6 @@ public class Nilai {
     }
 
     public String tentukanKelulusan(double nilaiAkhir) {
-
-        if (nilaiAkhir < 0 || nilaiAkhir > 100) return "Error";
         
         if (nilaiAkhir >= 60) return "Lulus";    
         
