@@ -8,11 +8,11 @@ import org.junit.jupiter.api.DisplayName;
 @DisplayName("Path Testing - PerhitunganNilai")
 public class PerhitunganNilaiTest {
 
-    private PerhitunganNilai calculator;
+    private Nilai calculator;
 
     @BeforeEach
     public void setup() {
-        calculator = new PerhitunganNilai();
+        calculator = new Nilai();
     }
 
     // ===== PATH 1: Valid Input - Normal Result (1-3-4-6) =====
