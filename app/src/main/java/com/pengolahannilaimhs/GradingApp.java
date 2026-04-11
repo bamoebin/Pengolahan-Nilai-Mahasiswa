@@ -57,7 +57,7 @@ public class GradingApp {
         System.out.print("NIM  : ");
         String nim = scanner.next();
 
-        return new Mahasiswa(nim, "Ini Nama Dummy");
+        return new Mahasiswa(nim, "Ini Nama Dummy", "Ini Jurusan Dummy", "Ini Prodi Dummy", "Ini Kelas Dummy");
     }
 
     private void tampilkanHasil(Mahasiswa mahasiswa, double tugas, double uts, double uas) {
@@ -68,6 +68,9 @@ public class GradingApp {
         System.out.println("\n--- Hasil Pengolahan ---");
         System.out.println("NIM         : " + mahasiswa.getNim());
         System.out.println("Nama        : " + mahasiswa.getNama());
+        System.out.println("Jurusan     : " + mahasiswa.getJurusan());
+        System.out.println("Prodi       : " + mahasiswa.getProgramStudi());
+        System.out.println("Kelas       : " + mahasiswa.getKelas());
         System.out.println("Nilai Akhir : " + nilaiAkhir);
         System.out.println("Grade       : " + grade);
         System.out.println("Status      : " + status);
