@@ -17,6 +17,7 @@ public class GradingApp {
         System.out.println("=== Aplikasi Pengolahan Nilai Mahasiswa ===");
 
         while (lanjut) {
+            Mahasiswa mahasiswa = inputMahasiswa();
             double tugas;
             double uts;
             double uas;
@@ -36,7 +37,7 @@ public class GradingApp {
                 if (!inputValid) {
                     System.out.println("Input tidak valid! Pastikan rentang 0-100 dan tidak semuanya 0. Silakan coba lagi.");
                 } else {
-                    tampilkanHasil(tugas, uts, uas);
+                    tampilkanHasil(mahasiswa, tugas, uts, uas);
                 }
             }
 
@@ -51,12 +52,22 @@ public class GradingApp {
         scanner.close();
     }
 
-    private void tampilkanHasil(double tugas, double uts, double uas) {
+    private Mahasiswa inputMahasiswa() {
+        System.out.println("\nData Mahasiswa");
+        System.out.print("NIM  : ");
+        String nim = scanner.next();
+
+        return new Mahasiswa(nim, "Ini Nama Dummy");
+    }
+
+    private void tampilkanHasil(Mahasiswa mahasiswa, double tugas, double uts, double uas) {
         double nilaiAkhir = nilai.hitungNilaiAkhir(tugas, uts, uas);
         String grade = nilai.tentukanGrade(nilaiAkhir);
         String status = nilai.tentukanKelulusan(nilaiAkhir);
 
         System.out.println("\n--- Hasil Pengolahan ---");
+        System.out.println("NIM         : " + mahasiswa.getNim());
+        System.out.println("Nama        : " + mahasiswa.getNama());
         System.out.println("Nilai Akhir : " + nilaiAkhir);
         System.out.println("Grade       : " + grade);
         System.out.println("Status      : " + status);
