@@ -6,11 +6,11 @@ import org.junit.jupiter.api.Test;
 
 public class ValidasiDataTest {
 
-    private ValidasiData validator;
+    private Nilai validator;
 
     @BeforeEach
     public void setup() {
-        validator = new ValidasiData();
+        validator = new Nilai();
     }
 
     // --- GROUP 1: Uji Blok Kondisi && (Anggap Belum Input) ---

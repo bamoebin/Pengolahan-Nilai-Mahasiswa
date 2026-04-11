@@ -6,11 +6,11 @@ import org.junit.jupiter.api.Test;
 
 public class PenentuanGradeTest {
 
-    private PenentuanGrade penentu;
+    private Nilai penentu;
 
     @BeforeEach
     public void setup() {
-        penentu = new PenentuanGrade();
+        penentu = new Nilai();
     }
 
     @Test
