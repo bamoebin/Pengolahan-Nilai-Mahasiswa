@@ -4,19 +4,19 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class ValidasiDataTest {
+class ValidasiDataTest {
 
     private Nilai validator;
 
     @BeforeEach
-    public void setup() {
+    void setup() {
         validator = new Nilai();
     }
 
     // --- GROUP 1: Uji Blok Kondisi && (Anggap Belum Input) ---
     
     @Test
-    public void testTC01_SemuaNol() {
+    void validasi_SemuaNilaiNol_ReturnFalse() {
         // (1) setup (arrange, build)
         double tugas = 0, uts = 0, uas = 0;
         boolean actual;
@@ -29,7 +29,7 @@ public class ValidasiDataTest {
     }
 
     @Test
-    public void testTC02_UasBukanNol() {
+    void validasi_HanyaUasBukanNol_ReturnTrue() {
         // (1) setup (arrange, build)
         double tugas = 0, uts = 0, uas = 50;
         boolean actual;
@@ -42,7 +42,7 @@ public class ValidasiDataTest {
     }
 
     @Test
-    public void testTC03_UtsBukanNol() {
+    void validasi_HanyaUtsBukanNol_ReturnTrue() {
         // (1) setup (arrange, build)
         double tugas = 0, uts = 50, uas = 0;
         boolean actual;
@@ -55,7 +55,7 @@ public class ValidasiDataTest {
     }
 
     @Test
-    public void testTC04_SkenarioNormalValid() {
+    void validasi_SemuaNilaiValid_ReturnTrue() {
         // (1) setup (arrange, build)
         double tugas = 50, uts = 50, uas = 50;
         boolean actual;
@@ -70,7 +70,7 @@ public class ValidasiDataTest {
     // --- GROUP 2: Uji Blok Kondisi || (Di Luar Rentang) ---
     
     @Test
-    public void testTC05_TugasNegatif() {
+    void validasi_TugasKurangDariNol_ReturnFalse() {
         // (1) setup (arrange, build)
         double tugas = -1, uts = 50, uas = 50;
         boolean actual;
@@ -83,7 +83,7 @@ public class ValidasiDataTest {
     }
 
     @Test
-    public void testTC06_TugasLebihDari100() {
+    void validasi_TugasLebihDariSeratus_ReturnFalse() {
         // (1) setup (arrange, build)
         double tugas = 101, uts = 50, uas = 50;
         boolean actual;
@@ -96,7 +96,7 @@ public class ValidasiDataTest {
     }
 
     @Test
-    public void testTC07_UtsNegatif() {
+    void validasi_UtsKurangDariNol_ReturnFalse() {
         // (1) setup (arrange, build)
         double tugas = 50, uts = -1, uas = 50;
         boolean actual;
@@ -109,7 +109,7 @@ public class ValidasiDataTest {
     }
 
     @Test
-    public void testTC08_UtsLebihDari100() {
+    void validasi_UtsLebihDariSeratus_ReturnFalse() {
         // (1) setup (arrange, build)
         double tugas = 50, uts = 101, uas = 50;
         boolean actual;
@@ -122,7 +122,7 @@ public class ValidasiDataTest {
     }
 
     @Test
-    public void testTC09_UasNegatif() {
+    void validasi_UasKurangDariNol_ReturnFalse() {
         // (1) setup (arrange, build)
         double tugas = 50, uts = 50, uas = -1;
         boolean actual;
@@ -135,7 +135,7 @@ public class ValidasiDataTest {
     }
 
     @Test
-    public void testTC10_UasLebihDari100() {
+    void validasi_UasLebihDariSeratus_ReturnFalse() {
         // (1) setup (arrange, build)
         double tugas = 50, uts = 50, uas = 101;
         boolean actual;
