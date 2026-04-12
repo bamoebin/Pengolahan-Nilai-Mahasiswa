@@ -13,137 +13,139 @@ class ValidasiDataTest {
         validator = new Nilai();
     }
 
-    // --- GROUP 1: Uji Blok Kondisi && (Anggap Belum Input) ---
+    // --- TC01: Skenario Semua Input 0 ---
     
     @Test
-    void validasi_SemuaNilaiNol_ReturnFalse() {
-        // (1) setup (arrange, build)
+    void TC01_validasi_SemuaNilaiInput0_ReturnFalse() {
+        // (1) setup
         double tugas = 0, uts = 0, uas = 0;
         boolean actual;
 
-        // (2) exercise (act, operate)
+        // (2) exercise
         actual = validator.validasi(tugas, uts, uas);
 
-        // (3) verify (assert, check)
-        assertFalse(actual, "Gagal di N3: Harusnya false");
+        // (3) verify
+        assertFalse(actual, "Harusnya false karena semua nilai 0");
+    }
+
+    // --- TC02 - TC04: Skenario Salah Satu Nilai 0 ---
+
+    @Test
+    void TC02_validasi_NilaiUas0_ReturnTrue() {
+        // (1) setup
+        double tugas = 50, uts = 50, uas = 0;
+        boolean actual;
+
+        // (2) exercise
+        actual = validator.validasi(tugas, uts, uas);
+
+        // (3) verify
+        assertTrue(actual, "Harusnya true karena hanya UAS yang 0");
     }
 
     @Test
-    void validasi_HanyaUasBukanNol_ReturnTrue() {
-        // (1) setup (arrange, build)
-        double tugas = 0, uts = 0, uas = 50;
+    void TC03_validasi_NilaiUts0_ReturnTrue() {
+        // (1) setup
+        double tugas = 50, uts = 0, uas = 50;
         boolean actual;
 
-        // (2) exercise (act, operate)
+        // (2) exercise
         actual = validator.validasi(tugas, uts, uas);
 
-        // (3) verify (assert, check)
-        assertTrue(actual, "Lolos Blok 2: Harusnya true");
+        // (3) verify
+        assertTrue(actual, "Harusnya true karena hanya UTS yang 0");
     }
 
     @Test
-    void validasi_HanyaUtsBukanNol_ReturnTrue() {
-        // (1) setup (arrange, build)
-        double tugas = 0, uts = 50, uas = 0;
+    void TC04_validasi_NilaiTugas0_ReturnTrue() {
+        // (1) setup
+        double tugas = 0, uts = 50, uas = 50;
         boolean actual;
 
-        // (2) exercise (act, operate)
+        // (2) exercise
         actual = validator.validasi(tugas, uts, uas);
 
-        // (3) verify (assert, check)
-        assertTrue(actual, "Lolos Blok 2: Harusnya true");
+        // (3) verify
+        assertTrue(actual, "Harusnya true karena hanya Tugas yang 0");
     }
 
-    @Test
-    void validasi_SemuaNilaiValid_ReturnTrue() {
-        // (1) setup (arrange, build)
-        double tugas = 50, uts = 50, uas = 50;
-        boolean actual;
-
-        // (2) exercise (act, operate)
-        actual = validator.validasi(tugas, uts, uas);
-
-        // (3) verify (assert, check)
-        assertTrue(actual, "Lolos Blok 2: Harusnya true");
-    }
-
-    // --- GROUP 2: Uji Blok Kondisi || (Di Luar Rentang) ---
+    // --- TC05 - TC10: Skenario Nilai Di Luar Batas Atas/Bawah ---
     
     @Test
-    void validasi_TugasKurangDariNol_ReturnFalse() {
-        // (1) setup (arrange, build)
+    void TC05_validasi_TugasLebihKecilDari0_ReturnFalse() {
+        // (1) setup
         double tugas = -1, uts = 50, uas = 50;
         boolean actual;
 
-        // (2) exercise (act, operate)
+        // (2) exercise
         actual = validator.validasi(tugas, uts, uas);
 
-        // (3) verify (assert, check)
-        assertFalse(actual, "Gagal N5 (Tugas < 0)");
+        // (3) verify
+        assertFalse(actual, "Harusnya false karena Tugas < 0");
     }
 
     @Test
-    void validasi_TugasLebihDariSeratus_ReturnFalse() {
-        // (1) setup (arrange, build)
+    void TC06_validasi_TugasLebihBesarDari100_ReturnFalse() {
+        // (1) setup
         double tugas = 101, uts = 50, uas = 50;
         boolean actual;
 
-        // (2) exercise (act, operate)
+        // (2) exercise
         actual = validator.validasi(tugas, uts, uas);
 
-        // (3) verify (assert, check)
-        assertFalse(actual, "Gagal N6 (Tugas > 100)");
+        // (3) verify
+        assertFalse(actual, "Harusnya false karena Tugas > 100");
     }
 
     @Test
-    void validasi_UtsKurangDariNol_ReturnFalse() {
-        // (1) setup (arrange, build)
+    void TC07_validasi_UtsLebihKecilDari0_ReturnFalse() {
+        // (1) setup
         double tugas = 50, uts = -1, uas = 50;
         boolean actual;
 
-        // (2) exercise (act, operate)
+        // (2) exercise
         actual = validator.validasi(tugas, uts, uas);
 
-        // (3) verify (assert, check)
-        assertFalse(actual, "Gagal N7 (UTS < 0)");
+        // (3) verify
+        assertFalse(actual, "Harusnya false karena UTS < 0");
     }
 
     @Test
-    void validasi_UtsLebihDariSeratus_ReturnFalse() {
-        // (1) setup (arrange, build)
+    void TC08_validasi_UtsLebihBesarDari100_ReturnFalse() {
+        // (1) setup
         double tugas = 50, uts = 101, uas = 50;
         boolean actual;
 
-        // (2) exercise (act, operate)
+        // (2) exercise
         actual = validator.validasi(tugas, uts, uas);
 
-        // (3) verify (assert, check)
-        assertFalse(actual, "Gagal N8 (UTS > 100)");
+        // (3) verify
+        assertFalse(actual, "Harusnya false karena UTS > 100");
     }
 
     @Test
-    void validasi_UasKurangDariNol_ReturnFalse() {
-        // (1) setup (arrange, build)
+    void TC09_validasi_UasLebihKecilDari0_ReturnFalse() {
+        // (1) setup
         double tugas = 50, uts = 50, uas = -1;
         boolean actual;
 
-        // (2) exercise (act, operate)
+        // (2) exercise
         actual = validator.validasi(tugas, uts, uas);
 
-        // (3) verify (assert, check)
-        assertFalse(actual, "Gagal N9 (UAS < 0)");
+        // (3) verify
+        assertFalse(actual, "Harusnya false karena UAS < 0");
     }
 
     @Test
-    void validasi_UasLebihDariSeratus_ReturnFalse() {
-        // (1) setup (arrange, build)
+    void TC10_validasi_UasLebihBesarDari100_ReturnFalse() {
+        // (1) setup
         double tugas = 50, uts = 50, uas = 101;
         boolean actual;
 
-        // (2) exercise (act, operate)
+        // (2) exercise
         actual = validator.validasi(tugas, uts, uas);
 
-        // (3) verify (assert, check)
-        assertFalse(actual, "Gagal N10 (UAS > 100)");
+        // (3) verify
+        assertFalse(actual, "Harusnya false karena UAS > 100");
     }
 }
