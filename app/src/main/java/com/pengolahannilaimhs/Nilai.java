@@ -36,8 +36,10 @@ public class Nilai {
 
     public String tentukanKelulusan(double nilaiAkhir) {
         
-        if (nilaiAkhir >= 60) return "Lulus";    
+        if (nilaiAkhir >= 60) 
+            return "Lulus";
         
-        else return "Tidak Lulus";                
+        else 
+            return "Tidak Lulus";            
     }
 }
